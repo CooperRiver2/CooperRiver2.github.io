@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elliot's Big 3 Goals Tracker</title>
+    <style>
+        /* This section just adds some simple styling to make it look nice! */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #1c1e21;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 20px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+        /* Style for the new countdown timer */
+        #countdown {
+            font-size: 1.5em;
+            font-weight: 300;
+            color: #606770;
+            margin-bottom: 30px;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            padding: 15px 0;
+        }
+        .goal {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+        .question {
+            font-weight: 600;
+        }
+        .answer {
+            font-weight: 700;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: #e74c3c; /* Red for 'No' */
+            color: white;
+            display: inline-block;
+            min-width: 50px;
+        }
+        .answer-yes {
+            background-color: #2ecc71; /* Green for 'Yes' */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Elliot's Big 3 Goals Tracker</h1>
+
+        <p class="timer-prompt">How much time is left?</p>
+
+        <div id="countdown">Loading timer...</div>
+
+        <div class="goal">
+            <span class="question">Has Elliot bench pressed 300 pounds yet?</span>
+            <span class="answer">No</span>
+        </div>
+
+        <div class="goal">
+            <span class="question">Has Elliot completed 30 dead-hang pull-ups yet?</span>
+            <span class="answer">No</span>
+        </div>
+
+        <div class="goal">
+            <span class="question">Has Elliot completed a 50 kilometer run yet?</span>
+            <span class="answer">No</span>
+        </div>
+    </div>
+
+    <script>
+        // Set the date we're counting down to
+        const countDownDate = new Date("Oct 5, 2026 00:00:00").getTime();
+
+        // Update the count down every 1 second
+        const x = setInterval(function() {
+
+            // Get today's date and time
+            const now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            const distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result in the element with id="countdown"
+            document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+
+            // If the count down is finished, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "The challenge deadline has passed!";
+            }
+        }, 1000);
+    </script>
+
+</body>
+</html>
